@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DASHBOARD - REKAPITULASI BANJIR</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet.js -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h1>REKAPITULASI BANJIR INDONESIA</h1>
+      <nav id="navMenu">
+        <a href="index.html">Beranda</a>
+        <a href="tabel.html">Tabular</a>
+      </nav>
+    </header>
+
+    <section class="charts-layout">
+      <!-- Map Chart -->
+      <div class="chart-box" id="map-panel">
+        <h3>Peta Banjir Tahunan per Provinsi (kejadian), 2018–2024</h3>
+        <div id="map"></div>
+        <div class="toolbar-row">
+          <div class="year-selector">
+            <label for="year">Tahun:</labe>
+            <select id="year">
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+            </select>
+          </div>
+          <div class="legend">
+            <span><span class="box box1"></span> 0–50 kejadian</span>
+            <span><span class="box box2"></span> 50–100 kejadian</span>
+            <span><span class="box box3"></span> >100 kejadian</span>
+        </div>
+        </div>
+      </div>
+
+      <!-- Pie Chart -->
+      <div class="chart-box" id="pie-panel">
+        <h3>Banjir Nasional vs Bencana Lain (%), 2018-2024</h3>
+        <div class="pie-controls">
+          <label for="pie-year">Tahun:</label>
+          <select id="pie-year">
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+          </select>
+          <div class="dropdown-filter">
+            <button id="bencana-toggle">Kategori ⌄</button>
+            <div id="bencana-list" class="bencana-dropdown hidden"></div>
+          </div>
+        </div>
+        <canvas id="chart-pie"></canvas>
+      </div>
+
+      <!-- Bar Chart -->
+      <div class="chart-box" id="bar-panel">
+        <h3>Kerusakan Bangunan Akibat Banjir (%), 2021-2024</h3>
+        <p id="label-provinsi-bar" class="label-provinsi">
+          Menampilkan data nasional
+        </p>
+        <div class="bar-controls">
+          <button id="kerusakan-toggle">Kategori ⌄</button>
+          <div id="kerusakan-filter" class="kerusakan-dropdown hidden"></div>
+        </div>
+        <canvas id="chart-bar"></canvas>
+      </div>
+
+      <!-- Line Chart -->
+      <div class="chart-box" id="line-panel">
+        <h3>Deret Korban Banjir (Jiwa), 2018-2024</h3>
+        <p id="label-provinsi-line" class="label-provinsi">
+          Menampilkan data nasional
+        </p>
+        <div class="sub-chart-group">
+          <div class="sub-chart">
+            <h4 id="selamat">Korban Selamat</h4>
+            <canvas id="chart-line-selamat"></canvas>
+          </div>
+          <div class="sub-chart">
+            <h4 id="meninggal">Korban Meninggal</h4>
+            <canvas id="chart-line-meninggal"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/script.js"></script>
+    <script>
+      function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("active");
+      }
+
+      // Tutup hamburger jika klik di luar area nav atau hamburger
+      document.addEventListener("click", function (event) {
+        const nav = document.getElementById("navMenu");
+        const hamburger = document.querySelector(".hamburger");
+
+        // Jika nav sedang aktif, dan klik bukan di nav atau hamburger
+        if (
+          nav.classList.contains("active") &&
+          !nav.contains(event.target) &&
+          !hamburger.contains(event.target)
+        ) {
+          nav.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>
