@@ -194,7 +194,7 @@ h3 {
 #pie-panel canvas {
   flex: 1;
   height: 100% !important;
-  max-height: 240px;
+  max-height: 235px;
   margin-top: -35px;
 }
 
@@ -420,7 +420,7 @@ button {
     margin: 0.5rem 0;
   }
 
-  .year-selector{
+  .year-selector {
     margin-bottom: -2%;
   }
 
@@ -430,13 +430,13 @@ button {
     margin-top: 10px;
   }
 
-  .pie-controls{
-    position:static;
-    display:inline;
+  .pie-controls {
+    position: static;
+    display: inline;
     align-items: center;
   }
 
-  .pie-controls .dropdown-filter{
+  .pie-controls .dropdown-filter {
     position: relative;
     display: contents;
   }
@@ -448,7 +448,7 @@ button {
 
   /* LINE CHART */
   #line-panel .sub-chart-group {
-    flex-direction:column;
+    flex-direction: column;
   }
 
   #line-panel .sub-chart {
@@ -460,7 +460,9 @@ button {
   }
 
   /* Label & Dropdown */
-  .pie-controls, .bar-controls, .toolbar-row {
+  .pie-controls,
+  .bar-controls,
+  .toolbar-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -470,7 +472,8 @@ button {
     font-size: 0.8rem;
   }
 
-  h3, h4 {
+  h3,
+  h4 {
     font-size: 1rem;
   }
 }
